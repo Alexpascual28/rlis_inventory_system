@@ -5,7 +5,7 @@
     <h1 align="center">RLIS Robotics Lab Inventory System</h1>
 </p>
 <p align="center">
-    <em><code>The Robotics Laboratory Inventory System (RLIS) is a Google Sheets-based system designed to streamline inventory management in the robotics teaching laboratory. This repo contains Google Apps Script (Javascript) code for the Robotics Laboratory Inventory System (RLIS). This functions are used to modify or format the RLIS Google Spreadsheets database that stores all lab items and locations.</code></em>
+    <em><code>The Robotics Laboratory Inventory System (RLIS) is a Google Sheets-based system designed to streamline inventory management in the robotics teaching laboratory. This repo contains Google Apps Script (Javascript) code for the Robotics Laboratory Inventory System (RLIS). These functions are used to modify or format the RLIS Google Spreadsheets database that stores all lab items and locations.</code></em>
 </p>
 
 <br><!-- TABLE OF CONTENTS -->
@@ -172,13 +172,35 @@ The `Robotics Laboratory Inventory System (RLIS)` spreadsheet is set up to help 
 
 1. **Items Sheet**
 
-   This sheet lists all the items available in the laboratory. It serves as the central database for all items in the inventory.
+   This sheet lists all the items available in the laboratory. It serves as the central database for all individual items in the lab's inventory. The "Items" sheet also provides detailed information about individual items stored in the robotics laboratory. 
 
-   * **Purpose**: Serves as the central database for all individual items in the lab's inventory.
-   * **Columns**: Include details such as Item ID, Item Name, Description, Quantity, Date Modified, Location ID, Sub-Division Name, and Location Description.
+   * **Columns**:
+        These two columns are filled automatically when a new row is created using the "Add Item" button(`addRow()`).
+
+        - **Item ID**: A unique identifier for each item in the inventory. 
+        - **Date Modified**: The last date when the item's information was updated in RLIS. This is filled with the cutrrent date when creating a new item, but it should be modified manually by the user when information about the item is changed.
+
+        The user must then manually fill-up the following information about the new item:
+
+        - **Item Name**: The name of the item.
+        - **Description**: Detailed description of the item, possibly including its use or specifications.
+        - **Quantity**: The quantity of each item available.
+        - **Location ID**: The identifier of the storage location where the item is kept, linking back to the "Sub-Divisions" and "Storage Locations" sheet. The Location ID has a format of **/RRR/SSS-DD**, where *RRR* is the **room number** (e.g ifn room is P/T/410, *RRR* is 410), *SSS* is the **storage location number** (see area map for reference), and *DD* is the **sub-division number**.
+
+        The following three columns are then automatically filled based on the inputted **Location ID**:
+
+        - **Sub-Division Name**: The specific sub-division within the storage location where the item is stored. 
+        - **Location Description**: A detailed description of the exact location of the item within the facility.
+        - **Room**: The name of the room where the item is stored, further linking to details in the "Rooms and Types" sheet.
+
+        **Example Item**:
+        | Item ID  | Item Name    | Description | Quantity| Date Modified | Location ID | Sub-Division Name | Location Description | Room |
+        | 243      | RDaC Returned Kits | Untested RDaC returned kits (Robotics Students) | 20 | 2024-03-19 | /410/205-01 | Temporary Project Components Cupboard, Shelf 1 | Cupboard under robotics arena, next to Bench 14 | Robotics Teaching Lab (4th Floor) |
+
    * **Buttons**:
       - **[Add Item]**: Executes `addRow()` from "*Add Row.gs*" to insert new item entries.
       - **[By Item]**, **[By Date]**, **[By Location]**: Linked to `sortByItemID()`, `sortByDate()`, and `sortByLocation()` in "*Sorting.gs*", respectively. These buttons allow users to reorder the list based on the item ID, the date of entry/update, or the storage location.
+
    * **Area Map**: Illustrates the arrangement of storage locations within the lab, linking visual space to data entries, helping users find items’ physical locations faster.
 
 2. **Storage Locations Sheet**
