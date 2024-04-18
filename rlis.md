@@ -13,17 +13,15 @@
   <summary>Table of Contents</summary><br>
 
 - [ Overview](#-overview)
-- [ Features](#-features)
+- [ Directory Description](#directory-description)
 - [ Repository Structure](#-repository-structure)
 - [ Modules](#-modules)
 - [ Getting Started](#-getting-started)
   - [ Installation](#-installation)
   - [ Usage](#-usage)
-  - [ Tests](#-tests)
-- [ Project Roadmap](#-project-roadmap)
+- [RLIS](#rlis)
+- [ Code Overview](#code-overview)
 - [ Contributing](#-contributing)
-- [ License](#-license)
-- [ Acknowledgments](#-acknowledgments)
 </details>
 <hr>
 
@@ -287,6 +285,10 @@ function sortByItemID() {
 }
 ```
 
+**Functions Overview**
+
+These functions are used to sort items in the "Items" sheet based on different criteria: Item ID, Location, and Date. This allows users to easily organize and view inventory based on different criteria, which is essential for effective inventory management in a dynamic environment like a robotics lab. The functions use a control cell (F2) to toggle the sort order, making it user-friendly and adaptable to different user needs or scenarios.
+
 * `sortByItemID`:
    * Sorts the **"Items"** sheet by the Item ID.
    * *Implementation*:
@@ -383,19 +385,5 @@ Contributions are welcome! Here are several ways you can contribute:
    </a>
 </p>
 </details>
-
----
-
-##  License
-
-This project is protected under the [SELECT-A-LICENSE](https://choosealicense.com/licenses) License. For more details, refer to the [LICENSE](https://choosealicense.com/licenses/) file.
-
----
-
-##  Acknowledgments
-
-- List any resources, contributors, inspiration, etc. here.
-
-[**Return**](#-overview)
 
 ---
