@@ -175,7 +175,7 @@ The `Robotics Laboratory Inventory System (RLIS)` spreadsheet is set up to help 
    This sheet lists all the items available in the laboratory. It serves as the central database for all individual items in the lab's inventory. The "Items" sheet also provides detailed information about individual items stored in the robotics laboratory. 
 
    * **Columns**:
-        These two columns are filled automatically when a new row is created using the "Add Item" button(`addRow()`).
+        These two columns are filled automatically when a new row is created using the "Add Item" button(`addRow()`):
 
         - **Item ID**: A unique identifier for each item in the inventory. 
         - **Date Modified**: The last date when the item's information was updated in RLIS. This is filled with the cutrrent date when creating a new item, but it should be modified manually by the user when information about the item is changed.
@@ -185,7 +185,7 @@ The `Robotics Laboratory Inventory System (RLIS)` spreadsheet is set up to help 
         - **Item Name**: The name of the item.
         - **Description**: Detailed description of the item, possibly including its use or specifications.
         - **Quantity**: The quantity of each item available.
-        - **Location ID**: The identifier of the storage location where the item is kept, linking back to the "Sub-Divisions" and "Storage Locations" sheet. The Location ID has a format of **/RRR/SSS-DD**, where *RRR* is the **room number** (e.g ifn room is P/T/410, *RRR* is 410), *SSS* is the **storage location number** (see area map for reference), and *DD* is the **sub-division number**.
+        - **Location ID**: *Drop-down*. The identifier of the storage location where the item is kept, linking back to the "Sub-Divisions" and "Storage Locations" sheet. The Location ID has a format of **/RRR/SSS-DD**, where *RRR* is the **room number** (e.g if the room is P/T/410, *RRR* is 410), *SSS* is the **storage location number** (see area map for reference), and *DD* is the **sub-division number**.
 
         The following three columns are then automatically filled based on the inputted **Location ID**:
 
@@ -207,30 +207,85 @@ The `Robotics Laboratory Inventory System (RLIS)` spreadsheet is set up to help 
 
 2. **Storage Locations Sheet**
 
-   It details where each item is stored within the lab. This helps in quickly finding where an item is physically located.
+   The "Storage Locations" sheet in the file provides details about various storage units within the robotics laboratory. This helps in quickly finding where an item is physically located. It helps to ascertain where each item is stored within the lab, by using the "*Storage ID*" linked identifier and detailed descriptions of the location within the lab’s space.
 
-   **Purpose**: Details where each item is stored within the lab, described by identifiers like Storage ID and detailed descriptions of the location within the lab’s space.
-   **Columns**: Storage ID, Storage Name, Storage Type, Room, and detailed location descriptions.
-   **Buttons**:
+   * **Columns**:
+        This column is filled automatically as information about the storage location is introduced:
+
+        - **Storage ID**: The full unique identifier for each storage location within the rooms. It follows the format **/RRR/SSS**, where *RRR* is the **room number** (e.g if the room is P/T/410, *RRR* is 410) and *SSS* is the **storage location number** (see area map for reference).
+
+        The user must then manually fill-up the following information about the new storage location:
+
+        - **Storage Name**: The name or designation of the storage unit.
+        - **Storage Type**: The type of storage unit (e.g., Cupboard).
+        - **Room**: *Drop-down*. The room ID where the storage is located, linking back to the **"Rooms and Types"** sheet (*e.g P/T/410*).
+        - **ID #**: The **storage location number** (*SSS*). A sequential identifier / unique reference for the storage within the room (see area map for reference).
+        - **Location Description**: A detailed description of where the storage unit is located within the room.
+        - **# of Sub-Divisions**: The number of sub-divisions or compartments within each storage unit.
+
+        **Example Storage Location**:
+
+        | Storage ID  | Storage Name          | Storage Type                                     | Room | ID # | Location Description | # of Sub-Divisions |
+        | ---         | ---                   | ---                                              | ---  | ---  | ---                  | ---                |
+        | /410/001 | Robotics Staff | Cupboard | P/T/410 | 1 | South wall, next to east windows | 6 |
+
+   * **Buttons**:
       - **[Add Location]**: Tied to `addStorageRow()` in "*Add Row.gs*", which facilitates the inclusion of new storage locations into the system.
       - **[Re-Format Sheet Colours]**: Linked to `formatStorageLocationSheet()` in "*Formating.gs*", this button allows users to reapply color formats to enhance the visual differentiation of data.
-   **Area Map**: Similar to the "**Items**" sheet, providing a visual representation of storage locations to improve spatial understanding.
+
+    * **Area Map**: Similar to the "**Items**" sheet, providing a visual representation of storage locations to improve spatial understanding.
 
 3. **Sub-Divisions Sheet**
 
-   This sheet breaks down each storage location into smaller parts, such as shelves or drawers. It is used for fine-grained management of the storage areas.
+   The "Sub-Divisions" sheet provides detailed information about smaller organizational units within the storage locations in the robotics laboratory. This sheet breaks down each storage location into smaller parts, such as shelves or drawers. It is used for fine-grained management of the storage areas.
 
-   * **Purpose**: Breaks down each storage location further into smaller divisions like shelves or drawers, crucial for precise inventory management.
-   * **Columns**: Sub-Division ID, Full Name/Contents, Storage Location, ID Number, Sub-Division Type, Label, and a column indicating if an item count is required.
+   * **Columns**:
+        These columns are filled automatically as information about the sub-division is introduced:
+
+        - **Sub-Division ID**: A unique identifier for each sub-division, showing a relationship to a larger storage ID. The *Sub-Division ID* is the same as the *Location ID* in the "Items" sheet, and has a format of **/RRR/SSS-DD**, where *RRR* is the **room number** (e.g if the room is P/T/410, *RRR* is 410), *SSS* is the **storage location number** (see area map for reference), and *DD* is the **sub-division number**.
+        - **Full Name/Contents**: Descriptive name or contents of the sub-division, which may include the specific items or type of items stored there. It fills up automatically as data is introduced in the other column fields of the row. It follows the format: **Storage Location Name** + **Storage Type** + **"||"** + **Sub-Division Type** + **ID Number (If "Count == Yes")** + **Label (If not empty)**.
+
+        The user must then manually fill-up the following information about the new storage sub-division:
+
+        - **Storage Location**: Drop-down. Links the sub-division back to the main storage ID, which is detailed on the "Storage Locations" sheet.
+        - **ID #**: A sequential identifier and unique reference for the sub-division within its main storage location (e.g, 3). Numbers are ussually assigned bottom-to-top and left-to-right within the storage location (e.g, 1 equals lower shelf).
+        - **Sub-Division Type**: The type of sub-division (e.g., Shelf, Drawer) indicating the physical nature of the storage subdivision.
+        - **Label**: Labels or tags used for the sub-division, providing further details about what is stored.
+        - **Count ? (Y/N)**: *Drop-down*. Indicates whether an inventory count is applicable or recorded for this sub-division.
+
+        **Example Sub-Division**:
+
+        | Sub-Division ID  | Full Name/Contents          | Storage Location                                    | ID # | Sub-Division Type | Label | Count ? |
+        | ---         | ---                   | ---                                              | ---  | ---  | ---                  | ---                |
+        | /410/001-01 | Robotics Staff Cupboard ¦¦ Shelf 1: Power Supplies, Batteries & Cables | /410/001 | 1 | Shelf | Power Supplies, Batteries & Cables | Yes |
+
    * **Buttons**:
       - **[Add Sub-Division]**: Executes `addSubDivisionRow()` in "*Add Row.gs*" to add new subdivisions, enhancing the granularity of location data.
       - **[Re-Format Sheet Colours]**: Tied to `formatSubDivisionSheet()` in "*Formating.gs*", used to refresh the visual styling of the sheet.
 
 4. **Rooms and Types Sheet**
 
-   * Lists different rooms in the lab and their purposes.
-   * Columns include Room ID, Room Name, Floor, Storage Types, Sub-Division Types, Max Item ID, and Current Date.
-   * This sheet is crucial for managing spaces within the laboratory and understanding their usage.
+   The "Rooms and Types" sheet contains information about various rooms in the robotics laboratory, including their identifiers, names, types of storage available, and other details. It lists different rooms in the lab and their purposes. This sheet is crucial for managing spaces within the laboratory and understanding their usage.
+
+   * **Columns**:
+        The following columns are used to manually input information about the available lab rooms:
+
+        **Room ID**: A unique identifier for each room.
+        **Room Name**: The name of the room.
+        **Floor**: The floor on which the room is located.
+
+        The following columns are used to store miscellaneous pivot information, to be used by the other sheets:
+
+        **Storage Types**: The type of storage units available in the room (e.g., Drawer Unit, Locker Group, Shelving Unit, Hanger Set).
+        **Sub-Division Types**: More specific types of storage subdivisions within the room (e.g., Drawer, Locker/Safe, Shelf, Hanger).
+        **Max Item ID**: The highest item ID stored in the RLIS "Items" sheet.
+        **Current Date**: The current date, constanty updated by the use of the `TODAY()` function.
+
+        **Example Room**
+
+        | Room ID | Room Name             | Floor     |
+        | ---     | ---                   | ---       |
+        | P/T/410 | Robotics Teaching Lab | 4th Floor |
 
 ### Features
 
