@@ -27,7 +27,7 @@
 
 ##  Overview
 
-<code>This document provides a comprehensive guide for the Robotics Laboratory Inventory System (RLIS) developed using Google Apps Script. The RLIS is designed to manage and maintain an up-to-date inventory of items and locations in the robotics lab using Google Sheets as the backend database. This script suite enables dynamic interaction with the data, allowing users to add, sort, format, and generate reports directly from the spreadsheet interface.</code>
+<code>This document provides a comprehensive guide for the Robotics Laboratory Inventory System (RLIS) developed using Google Apps Script. The RLIS is designed to manage and maintain an up-to-date inventory of items and locations in the robotics lab using Google Sheets as the back-end database. This script suite enables dynamic interaction with the data, allowing users to add, sort, format, and generate reports directly from the spreadsheet interface.</code>
 
 <code>It uses various sheets to organize items, their storage locations, and the detailed subdivisions of these locations. Each sheet is equipped with buttons for performing specific actions like adding new entries or sorting existing data, and the system includes visual maps to enhance user interaction.</code>
 
@@ -130,7 +130,7 @@ Each script file is equipped with specific functions that are triggered by eithe
 **Manual Execution**
 
 * Go to the Apps Script window.
-* Select the function you want to run from the dropdown.
+* Select the function you want to run from the drop-down.
 * Click the **play/run** button.
 
 **Trigger Setup**
@@ -178,7 +178,7 @@ The `Robotics Laboratory Inventory System (RLIS)` spreadsheet is set up to help 
         These two columns are filled automatically when a new row is created using the "Add Item" button(`addRow()`):
 
         - **Item ID**: A unique identifier for each item in the inventory. 
-        - **Date Modified**: The last date when the item's information was updated in RLIS. This is filled with the cutrrent date when creating a new item, but it should be modified manually by the user when information about the item is changed.
+        - **Date Modified**: The last date when the item's information was updated in RLIS. This is filled with the current date when creating a new item, but it should be modified manually by the user when information about the item is changed.
 
         The user must then manually fill-up the following information about the new item:
 
@@ -248,7 +248,7 @@ The `Robotics Laboratory Inventory System (RLIS)` spreadsheet is set up to help 
         The user must then manually fill-up the following information about the new storage sub-division:
 
         - **Storage Location**: Drop-down. Links the sub-division back to the main storage ID, which is detailed on the "Storage Locations" sheet.
-        - **ID #**: A sequential identifier and unique reference for the sub-division within its main storage location (e.g, 3). Numbers are ussually assigned bottom-to-top and left-to-right within the storage location (e.g, 1 equals lower shelf).
+        - **ID #**: A sequential identifier and unique reference for the sub-division within its main storage location (e.g, 3). Numbers are usually assigned bottom-to-top and left-to-right within the storage location (e.g, 1 equals lower shelf).
         - **Sub-Division Type**: The type of sub-division (e.g., Shelf, Drawer) indicating the physical nature of the storage subdivision.
         - **Label**: Labels or tags used for the sub-division, providing further details about what is stored.
         - **Count ? (Y/N)**: *Drop-down*. Indicates whether an inventory count is applicable or recorded for this sub-division.
@@ -279,7 +279,7 @@ The `Robotics Laboratory Inventory System (RLIS)` spreadsheet is set up to help 
         **Storage Types**: The type of storage units available in the room (e.g., Drawer Unit, Locker Group, Shelving Unit, Hanger Set).
         **Sub-Division Types**: More specific types of storage subdivisions within the room (e.g., Drawer, Locker/Safe, Shelf, Hanger).
         **Max Item ID**: The highest item ID stored in the RLIS "Items" sheet.
-        **Current Date**: The current date, constanty updated by the use of the `TODAY()` function.
+        **Current Date**: The current date, constantly updated by the use of the `TODAY()` function.
 
         **Example Room**
 
