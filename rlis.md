@@ -150,19 +150,19 @@ Creating a button in Google Sheets and linking it to a function in Google Apps S
 
 1. Insert a Drawing as a Button
 
-* Click on **Insert** in the menu bar.
-* Select **Drawing** > **+ New**.
-* In the drawing dialog that appears, use the shape tool to draw a rectangle or any shape that you'd like to use as a button.
-* Add text to your shape if you want, like "*Add Row*".
-* Click **Save and Close** to add the drawing to your sheet.
+   * Click on **Insert** in the menu bar.
+   * Select **Drawing** > **+ New**.
+   * In the drawing dialog that appears, use the shape tool to draw a rectangle or any shape that you'd like to use as a button.
+   * Add text to your shape if you want, like "*Add Row*".
+   * Click **Save and Close** to add the drawing to your sheet.
 
 2. Link the Drawing to Your Script
 
-* Once the drawing is placed in your sheet, click on it to select it.
-* You’ll see a small menu icon in the top right corner of the drawing (it looks like three vertical dots).
-* Click on the menu icon, and select **Assign script**.
-* In the dialog box that appears, enter the name of the function you wrote in Apps Script (`addRow` in this case). Do not include the parentheses.
-* Click **OK**.
+   * Once the drawing is placed in your sheet, click on it to select it.
+   * You’ll see a small menu icon in the top right corner of the drawing (it looks like three vertical dots).
+   * Click on the menu icon, and select **Assign script**.
+   * In the dialog box that appears, enter the name of the function you wrote in Apps Script (`addRow` in this case). Do not include the parentheses.
+   * Click **OK**.
 
 ---
 
@@ -172,51 +172,151 @@ The `Robotics Laboratory Inventory System (RLIS)` spreadsheet is set up to help 
 
 ### Spreadsheet Structure and Functionality
 
-1. Items Sheet
+1. **Items Sheet**
 
-* **Purpose**: Serves as the central database for all individual items in the lab's inventory.
-* **Columns**: Include details such as Item ID, Item Name, Description, Quantity, Date Modified, Location ID, Sub-Division Name, and Location Description.
-* **Buttons**:
-   - **[Add Item]**: Executes `addRow()` from "*Add Row.gs*" to insert new item entries.
-   - **[By Item]**, **[By Date]**, **[By Location]**: Linked to `sortByItemID()`, `sortByDate()`, and `sortByLocation()` in "*Sorting.gs*", respectively. These buttons allow users to reorder the list based on the item ID, the date of entry/update, or the storage location.
-* **Area Map**: Illustrates the arrangement of storage locations within the lab, linking visual space to data entries, helping users find items’ physical locations faster.
+   This sheet lists all the items available in the laboratory. It serves as the central database for all items in the inventory.
 
-2. Storage Locations Sheet
+   * **Purpose**: Serves as the central database for all individual items in the lab's inventory.
+   * **Columns**: Include details such as Item ID, Item Name, Description, Quantity, Date Modified, Location ID, Sub-Division Name, and Location Description.
+   * **Buttons**:
+      - **[Add Item]**: Executes `addRow()` from "*Add Row.gs*" to insert new item entries.
+      - **[By Item]**, **[By Date]**, **[By Location]**: Linked to `sortByItemID()`, `sortByDate()`, and `sortByLocation()` in "*Sorting.gs*", respectively. These buttons allow users to reorder the list based on the item ID, the date of entry/update, or the storage location.
+   * **Area Map**: Illustrates the arrangement of storage locations within the lab, linking visual space to data entries, helping users find items’ physical locations faster.
 
-**Purpose**: Details where each item is stored within the lab, described by identifiers like Storage ID and detailed descriptions of the location within the lab’s space.
-**Columns**: Storage ID, Storage Name, Storage Type, Room, and detailed location descriptions.
-**Buttons**:
-   - **[Add Location]**: Tied to addStorageRow() in "Add Row.gs", which facilitates the inclusion of new storage locations into the system.
-   - [Re-Format Sheet Colours]: Linked to formatStorageLocationSheet() in "Formating.gs", this button allows users to reapply color formats to enhance the visual differentiation of data.
-**Area Map**: Similar to the "Items" sheet, providing a visual representation of storage locations to improve spatial understanding.
+2. **Storage Locations Sheet**
 
-3. Sub-Divisions Sheet
+   It details where each item is stored within the lab. This helps in quickly finding where an item is physically located.
 
-Purpose: Breaks down each storage location further into smaller divisions like shelves or drawers, crucial for precise inventory management.
-Columns: Sub-Division ID, Full Name/Contents, Storage Location, ID Number, Sub-Division Type, Label, and a column indicating if an item count is required.
-Buttons:
-[Add Sub-Division]: Executes addSubDivisionRow() in "Add Row.gs" to add new subdivisions, enhancing the granularity of location data.
-[Re-Format Sheet Colours]: Tied to formatSubDivisionSheet() in "Formating.gs", used to refresh the visual styling of the sheet.
+   **Purpose**: Details where each item is stored within the lab, described by identifiers like Storage ID and detailed descriptions of the location within the lab’s space.
+   **Columns**: Storage ID, Storage Name, Storage Type, Room, and detailed location descriptions.
+   **Buttons**:
+      - **[Add Location]**: Tied to `addStorageRow()` in "*Add Row.gs*", which facilitates the inclusion of new storage locations into the system.
+      - **[Re-Format Sheet Colours]**: Linked to `formatStorageLocationSheet()` in "*Formating.gs*", this button allows users to reapply color formats to enhance the visual differentiation of data.
+   **Area Map**: Similar to the "**Items**" sheet, providing a visual representation of storage locations to improve spatial understanding.
 
-### How It Works
+3. **Sub-Divisions Sheet**
 
-**Adding Data**
+   This sheet breaks down each storage location into smaller parts, such as shelves or drawers. It is used for fine-grained management of the storage areas.
 
-Users can add new items, locations, or subdivisions by clicking the respective "[Add]" button. This action triggers a function that automatically inserts a new row, assigns an ID, and links relevant data across sheets.
+   * **Purpose**: Breaks down each storage location further into smaller divisions like shelves or drawers, crucial for precise inventory management.
+   * **Columns**: Sub-Division ID, Full Name/Contents, Storage Location, ID Number, Sub-Division Type, Label, and a column indicating if an item count is required.
+   * **Buttons**:
+      - **[Add Sub-Division]**: Executes `addSubDivisionRow()` in "*Add Row.gs*" to add new subdivisions, enhancing the granularity of location data.
+      - **[Re-Format Sheet Colours]**: Tied to `formatSubDivisionSheet()` in "*Formating.gs*", used to refresh the visual styling of the sheet.
 
-**Sorting Data**
+4. **Rooms and Types Sheet**
+
+   * Lists different rooms in the lab and their purposes.
+   * Columns include Room ID, Room Name, Floor, Storage Types, Sub-Division Types, Max Item ID, and Current Date.
+   * This sheet is crucial for managing spaces within the laboratory and understanding their usage.
+
+### Features
+
+**Data Entry and Management**
+
+New items, locations, and subdivisions are added manually or through scripts in Google Apps Script that automate parts of the process, such as assigning new IDs or inserting new rows. Users can add new items, locations, or subdivisions by clicking the respective "**[Add]**" button. This action triggers a function that automatically inserts a new row, assigns an ID, and links relevant data across sheets.
+
+Each item entry includes links to its storage and subdivision, ensuring that all data is interconnected for easy navigation and update.
+
+**Sorting and Searching Data**
+
+This makes it easy to find items quickly. Users can manually sort or use script triggers to automatically sort the inventory as new data is added. Custom functions in Google Apps Script are used to sort data in the sheets based on various criteria like item ID, location, or date. 
 
 The sorting buttons on the "Items" sheet provide a quick way to organize the view based on different criteria. Clicking these buttons triggers sorting functions that reorder the data as specified, making it easier to locate or analyze inventory based on varying needs.
 
-**Formatting**
+**Automated Formatting**
+
+The spreadsheet uses scripts to apply conditional formatting automatically. This helps highlight different types of data, such as items that are low in stock or newly added equipment. Color coding and other visual aids are used to make the spreadsheet user-friendly and data easy to read at a glance.
 
 The re-formatting buttons apply predefined color schemes to the sheets, enhancing readability and helping users quickly distinguish between different types of data or status.
+
+**Integration and Updating**
+
+The spreadsheet is designed to be flexible and scalable. It can be connected with other tools like Google Forms for inventory checks or updates, and it can be expanded with more sheets or columns as needed. Regular updates to the script ensure that the system remains efficient and continues to meet the needs of the lab.
 
 **Area Maps**
 
 The inclusion of area maps in the "Items" and "Storage Locations" sheets provides a visual tool that correlates physical space in the lab with data entries. This feature is especially useful in large labs where locating an item’s position can be challenging.
 
+---
 
+## Code Overview
+
+### Adding Rows
+
+When a new item or location needs to be added to the database, the corresponding add* function in **Add Row.gs** is executed. Here’s a brief snippet showing how a new row is added and ID is generated for sub-divisions:
+
+```javascript
+function addSubDivisionRow() {
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('Sub-Divisions');
+  var lastRow = sheet.getLastRow();
+  sheet.insertRowAfter(lastRow);
+  var newRow = sheet.getRange(lastRow + 1, 1);
+  newRow.setValues([['New ID', 'Other Info']]);
+}
+```
+
+**Functions Overview**
+
+addSubDivisionRow Function:
+This function adds a new row in the "Sub-Divisions" sheet of the spreadsheet.
+It defines where to insert the new row and sets up formulas to automatically populate fields based on existing data in other sheets like "Storage Locations".
+It constructs the sub-division ID dynamically using concatenation and regex functions to format data from other cells in the sheet.
+After inserting and setting up the new row, another function formatSubDivisionSheet() is called, presumably to apply formatting rules.
+addStorageRow Function:
+Similar to the first function, it adds a new row to the "Storage Locations" sheet.
+The new row’s data fields are set up with formulas that dynamically generate IDs and link data from other related sheets.
+Specific functions for setting values in the row are tailored to maintain consistency and integrity of the storage location data.
+addItemRow Function:
+This function manages the addition of new items into the "Items" sheet.
+It generates a new item ID based on the maximum ID found in the sheet, ensuring unique identifiers for each entry.
+It also includes dynamic date insertion using Google Sheets functions to always input the current date when adding a new row.
+The item's storage and sub-division details are linked via VLOOKUP functions to other sheets, ensuring the data remains interlinked and accurate.
+
+### Sorting Data
+
+Data can be sorted by different criteria using the functions in **Sorting.gs**. For instance, sorting by item ID involves:
+
+```javascript
+function sortByItemID() {
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('Items');
+  var range = sheet.getRange('A2:A' + sheet.getLastRow());
+  range.sort({column: 1, ascending: true});
+}
+```
+
+### Formatting Sheets
+
+The formatting is handled by **Formating.gs**, applying styles based on the content type:
+
+```javascript
+function formatSubDivisionSheet(){
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('Sub-Divisions');
+  var range = sheet.getRange('A1:A' + sheet.getLastRow());
+  range.setBackground('yellow');
+}
+```
+
+**Functions Overview**
+
+* `formatSubDivisionSheet()`:
+   - This function focuses on formatting the **"Sub-Divisions"** sheet. It calls other functions to format columns based on specific conditions or data locations within the sheet.
+   - It utilizes `formatColumnCellsByLocation()` for setting format conditions for column 'A', and calls `formatColumnCellsBySubDivision()` to apply additional specific formatting rules.
+
+* `formatStorageLocationSheet()`:
+   - Formats the "Storage Locations" sheet, specifically between columns 'A' and 'E', using the formatColumnCellsByLocation() function to apply consistent styling or data representation criteria.
+
+* `formatColumnCellsByLocation(t_sheetName, t_sourceColumnName, t_targetColumnName)`:
+   - A utility function that applies formatting to columns within a specified sheet. It dynamically sets background colors based on the numeric part of cell values, employing a subtle color gradient technique.
+   - This function uses logic to extract numeric values from cell content and calculates background color based on these values, indicating a visual cue or grouping mechanism within the spreadsheet.
+
+* `calculateSubtleGradientColorLocation(value)` and `calculateSubtleGradientColorSubDivision(value)`:
+   - These functions generate color values based on calculated hues from extracted numeric values. They provide a way to visually differentiate data based on its content, enhancing readability and data management efficiency.
+
+**Additional Utility Functions**
+
+* `hslToRgb(h, s, l)` and `rgbToHex(rgb)`:
+   - These functions convert HSL (Hue, Saturation, Lightness) color values to RGB (Red, Green, Blue), and then RGB to hexadecimal color codes for use in spreadsheet formatting. This allows the script to apply custom colors to spreadsheet cells based on specific conditions.
 
 ---
 
