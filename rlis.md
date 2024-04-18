@@ -258,20 +258,22 @@ function addSubDivisionRow() {
 
 **Functions Overview**
 
-addSubDivisionRow Function:
-This function adds a new row in the "Sub-Divisions" sheet of the spreadsheet.
-It defines where to insert the new row and sets up formulas to automatically populate fields based on existing data in other sheets like "Storage Locations".
-It constructs the sub-division ID dynamically using concatenation and regex functions to format data from other cells in the sheet.
-After inserting and setting up the new row, another function formatSubDivisionSheet() is called, presumably to apply formatting rules.
-addStorageRow Function:
-Similar to the first function, it adds a new row to the "Storage Locations" sheet.
-The new row’s data fields are set up with formulas that dynamically generate IDs and link data from other related sheets.
-Specific functions for setting values in the row are tailored to maintain consistency and integrity of the storage location data.
-addItemRow Function:
-This function manages the addition of new items into the "Items" sheet.
-It generates a new item ID based on the maximum ID found in the sheet, ensuring unique identifiers for each entry.
-It also includes dynamic date insertion using Google Sheets functions to always input the current date when adding a new row.
-The item's storage and sub-division details are linked via VLOOKUP functions to other sheets, ensuring the data remains interlinked and accurate.
+* `addSubDivisionRow`:
+   * This function adds a new row in the **"Sub-Divisions"** sheet of the spreadsheet.
+   * It defines where to insert the new row and sets up formulas to automatically populate fields based on existing data in other sheets like **"Storage Locations"**.
+   * It constructs the sub-division ID dynamically using concatenation and regex functions to format data from other cells in the sheet.
+   * After inserting and setting up the new row, another function `formatSubDivisionSheet()` is called, presumably to apply formatting rules.
+
+* `addStorageRow`:
+   * Similar to the first function, it adds a new row to the **"Storage Locations"** sheet.
+   * The new row’s data fields are set up with formulas that dynamically generate IDs and link data from other related sheets.
+   * Specific functions for setting values in the row are tailored to maintain consistency and integrity of the storage location data.
+
+* `addItemRow`:
+   * This function manages the addition of new items into the **"Items"** sheet.
+   * It generates a new item ID based on the maximum ID found in the sheet, ensuring unique identifiers for each entry.
+   * It also includes dynamic date insertion using Google Sheets functions to always input the current date when adding a new row.
+   * The item's storage and sub-division details are linked via **VLOOKUP** functions to other sheets, ensuring the data remains interlinked and accurate.
 
 ### Sorting Data
 
@@ -284,6 +286,25 @@ function sortByItemID() {
   range.sort({column: 1, ascending: true});
 }
 ```
+
+* `sortByItemID`:
+   * Sorts the **"Items"** sheet by the Item ID.
+   * *Implementation*:
+         - Retrieves the **"Items"** sheet and a specific range starting from row 5.
+         - Checks the current sort order from a cell (F2) and sorts the range accordingly either in ascending or descending order based on the Item ID (column A).
+
+* `sortByLocation`:
+   * Sorts the **"Items"** sheet by the Location and then by the sub-location within the same primary sort.
+   * *Implementation*:
+         - Similarly retrieves the **"Items"** sheet and the same range.
+         - Fetches the current sort order from the same control cell (F2).
+         - Sorts primarily by Location (column F) according to the specified order, and secondarily by sub-location (column E) always in descending order.
+
+* `sortByDate`:
+   * Sorts the **"Items"** sheet by the Date (likely of acquisition or last modified) and then by Location in a secondary order.
+   * *Implementation*:
+         - Uses the same retrieval method for the **"Items"** sheet and data range.
+         - Acquires the current sort order from the control cell and applies a primary sort by Date (column E) and a secondary sort by Location (column F) in descending order.
 
 ### Formatting Sheets
 
