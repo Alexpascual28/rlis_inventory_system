@@ -197,8 +197,9 @@ The `Robotics Laboratory Inventory System (RLIS)` spreadsheet is set up to help 
 
         <details open><summary>.</summary>
 
-        | Item ID  | Item Name    | Description | Quantity| Date Modified | Location ID | Sub-Division Name | Location Description | Room |
-        | 243      | RDaC Returned Kits | Untested RDaC returned kits (Robotics Students) | 20 | 2024-03-19 | /410/205-01 | Temporary Project Components Cupboard, Shelf 1 | Cupboard under robotics arena, next to Bench 14 | Robotics Teaching Lab (4th Floor) |
+        | Item ID  | Item Name          | Description                                     | Quantity| Date Modified | Location ID | Sub-Division Name | Location Description | Room |
+        | ---      | ---                | ---                                             | ---     | ---           | ---         | ---               | ---                  | ---  |
+        | 243      | RDaC Returned Kits | Untested RDaC returned kits (Robotics Students) | 20      | 2024-03-19    | /410/205-01 | Temporary Project Components Cupboard, Shelf 1 | Cupboard under robotics arena, next to Bench 14 | Robotics Teaching Lab (4th Floor) |
 
         </details>
 
