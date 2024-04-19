@@ -123,45 +123,6 @@ To deploy RLIS on your Google Sheets:
 * Name and Save Your Project:
    - Click **File** > **Save** and name your project **Robotics Laboratory Inventory System (RLIS)**.
 
-###  Usage
-
-Each script file is equipped with specific functions that are triggered by either manual execution or spreadsheet events. Here's different ways how you can run the functions:
-
-**Manual Execution**
-
-* Go to the Apps Script window.
-* Select the function you want to run from the drop-down.
-* Click the **play/run** button.
-
-**Trigger Setup**
-
-You can set up triggers for these functions to run automatically based on specific actions or time intervals:
-
-* Go to **Triggers** in the Apps Script menu.
-* Click **Add Trigger**.
-* Choose the function you want to set the trigger for.
-* Set the type of trigger (e.g., *time-driven* or *event-driven*).
-
-**Button Setup**
-
-Creating a button in Google Sheets and linking it to a function in Google Apps Script is a straightforward process that enhances the interactivity of your spreadsheet.
-
-1. Insert a Drawing as a Button
-
-   * Click on **Insert** in the menu bar.
-   * Select **Drawing** > **+ New**.
-   * In the drawing dialog that appears, use the shape tool to draw a rectangle or any shape that you'd like to use as a button.
-   * Add text to your shape if you want, like "*Add Row*".
-   * Click **Save and Close** to add the drawing to your sheet.
-
-2. Link the Drawing to Your Script
-
-   * Once the drawing is placed in your sheet, click on it to select it.
-   * You’ll see a small menu icon in the top right corner of the drawing (it looks like three vertical dots).
-   * Click on the menu icon, and select **Assign script**.
-   * In the dialog box that appears, enter the name of the function you wrote in Apps Script (`addRow` in this case). Do not include the parentheses.
-   * Click **OK**.
-
 ---
 
 ##  RLIS
@@ -427,6 +388,45 @@ function formatSubDivisionSheet(){
 
 * `hslToRgb(h, s, l)` and `rgbToHex(rgb)`:
    - These functions convert HSL (Hue, Saturation, Lightness) color values to RGB (Red, Green, Blue), and then RGB to hexadecimal color codes for use in spreadsheet formatting. This allows the script to apply custom colors to spreadsheet cells based on specific conditions.
+
+###  Usage
+
+Each script file is equipped with specific functions that are triggered by either manual execution or spreadsheet events. Here's different ways how you can run the functions:
+
+**Manual Execution**
+
+* Go to the Apps Script window.
+* Select the function you want to run from the drop-down.
+* Click the **play/run** button.
+
+**Trigger Setup**
+
+You can set up triggers for these functions to run automatically based on specific actions or time intervals:
+
+* Go to **Triggers** in the Apps Script menu.
+* Click **Add Trigger**.
+* Choose the function you want to set the trigger for.
+* Set the type of trigger (e.g., *time-driven* or *event-driven*).
+
+**Button Setup**
+
+Creating a button in Google Sheets and linking it to a function in Google Apps Script is a straightforward process that enhances the interactivity of your spreadsheet.
+
+1. Insert a Drawing as a Button
+
+   * Click on **Insert** in the menu bar.
+   * Select **Drawing** > **+ New**.
+   * In the drawing dialog that appears, use the shape tool to draw a rectangle or any shape that you'd like to use as a button.
+   * Add text to your shape if you want, like "*Add Row*".
+   * Click **Save and Close** to add the drawing to your sheet.
+
+2. Link the Drawing to Your Script
+
+   * Once the drawing is placed in your sheet, click on it to select it.
+   * You’ll see a small menu icon in the top right corner of the drawing (it looks like three vertical dots).
+   * Click on the menu icon, and select **Assign script**.
+   * In the dialog box that appears, enter the name of the function you wrote in Apps Script (`addRow` in this case). Do not include the parentheses.
+   * Click **OK**.
 
 ---
 
