@@ -175,6 +175,8 @@ The `Robotics Laboratory Inventory System (RLIS)` spreadsheet is set up to help 
    This sheet lists all the items available in the laboratory. It serves as the central database for all individual items in the lab's inventory. The "Items" sheet also provides detailed information about individual items stored in the robotics laboratory. 
 
    * **Columns**:
+        To add an item, click on the "**Add Item**" button. This will trigger the `addRow()` function.
+
         These two columns are filled automatically when a new row is created using the "Add Item" button(`addRow()`):
 
         - **Item ID**: A unique identifier for each item in the inventory. 
@@ -210,6 +212,8 @@ The `Robotics Laboratory Inventory System (RLIS)` spreadsheet is set up to help 
    The "Storage Locations" sheet in the file provides details about various storage units within the robotics laboratory. This helps in quickly finding where an item is physically located. It helps to ascertain where each item is stored within the lab, by using the "*Storage ID*" linked identifier and detailed descriptions of the location within the lab’s space.
 
    * **Columns**:
+        To add a new storage location, click on the "Add Location" button. This will trigger the addStorageRow() function.
+
         This column is filled automatically as information about the storage location is introduced:
 
         - **Storage ID**: The full unique identifier for each storage location within the rooms. It follows the format **/RRR/SSS**, where *RRR* is the **room number** (e.g if the room is P/T/410, *RRR* is 410) and *SSS* is the **storage location number** (see area map for reference).
@@ -240,6 +244,8 @@ The `Robotics Laboratory Inventory System (RLIS)` spreadsheet is set up to help 
    The "Sub-Divisions" sheet provides detailed information about smaller organizational units within the storage locations in the robotics laboratory. This sheet breaks down each storage location into smaller parts, such as shelves or drawers. It is used for fine-grained management of the storage areas.
 
    * **Columns**:
+        To add a new sub-division, click on the "Add Sub-Division" button. This will trigger the addSubDivisionRow() function.
+
         These columns are filled automatically as information about the sub-division is introduced:
 
         - **Sub-Division ID**: A unique identifier for each sub-division, showing a relationship to a larger storage ID. The *Sub-Division ID* is the same as the *Location ID* in the "Items" sheet, and has a format of **/RRR/SSS-DD**, where *RRR* is the **room number** (e.g if the room is P/T/410, *RRR* is 410), *SSS* is the **storage location number** (see area map for reference), and *DD* is the **sub-division number**.
@@ -268,6 +274,8 @@ The `Robotics Laboratory Inventory System (RLIS)` spreadsheet is set up to help 
    The "Rooms and Types" sheet contains information about various rooms in the robotics laboratory, including their identifiers, names, types of storage available, and other details. It lists different rooms in the lab and their purposes. This sheet is crucial for managing spaces within the laboratory and understanding their usage.
 
    * **Columns**:
+        To add a new room, just fill the table with the appropriate data in the first row available below, in the “Rooms” section. If more storage or sub-division types need to be added, just add them to the respective “Storage Types” or “Sub-Division Types“ column in the “Pivot” section.
+
         The following columns are used to manually input information about the available lab rooms:
 
         **Room ID**: A unique identifier for each room.
@@ -303,7 +311,7 @@ The sorting buttons on the "Items" sheet provide a quick way to organize the vie
 
 **Automated Formatting**
 
-The spreadsheet uses scripts to apply conditional formatting automatically. This helps highlight different types of data, such as items that are low in stock or newly added equipment. Color coding and other visual aids are used to make the spreadsheet user-friendly and data easy to read at a glance.
+The spreadsheet uses scripts to apply conditional formatting automatically. This helps highlight different types of data, such as to differentiate what area of one lab the storage location belongs to (matched to the area map colours), or to what storage locations a group of sub-divisions belong to. Color coding and other visual aids are used to make the spreadsheet user-friendly and data easy to read at a glance.
 
 The re-formatting buttons apply predefined color schemes to the sheets, enhancing readability and helping users quickly distinguish between different types of data or status.
 
