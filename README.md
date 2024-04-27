@@ -75,13 +75,13 @@
 
 | File                                                                                                                          | Summary                         |
 | ---                                                                                                                           | ---                             |
-| [Sub Division Generator.gs](https://github.com/Alexpascual28/rlis_inventory_system.git/blob/master/Sub%20Division%20Generator.gs) | <code>► INSERT-TEXT-HERE</code> |
-| [Tests.gs](https://github.com/Alexpascual28/rlis_inventory_system.git/blob/master/Tests.gs)                                   | <code>► INSERT-TEXT-HERE</code> |
-| [Formating.gs](https://github.com/Alexpascual28/rlis_inventory_system.git/blob/master/Formating.gs)                           | <code>► INSERT-TEXT-HERE</code> |
-| [Sorting.gs](https://github.com/Alexpascual28/rlis_inventory_system.git/blob/master/Sorting.gs)                               | <code>► INSERT-TEXT-HERE</code> |
-| [Dynamic Formating.gs](https://github.com/Alexpascual28/rlis_inventory_system.git/blob/master/Dynamic%20Formating.gs)           | <code>► INSERT-TEXT-HERE</code> |
-| [Add Row.gs](https://github.com/Alexpascual28/rlis_inventory_system.git/blob/master/Add%20Row.gs)                               | <code>► INSERT-TEXT-HERE</code> |
-| [Custom RLIS Functions.gs](https://github.com/Alexpascual28/rlis_inventory_system.git/blob/master/Custom%20RLIS%20Functions.gs)   | <code>► INSERT-TEXT-HERE</code> |
+| [Sub Division Generator.gs](https://github.com/Alexpascual28/rlis_inventory_system.git/blob/master/Sub%20Division%20Generator.gs) | <code> </code> |
+| [Tests.gs](https://github.com/Alexpascual28/rlis_inventory_system.git/blob/master/Tests.gs)                                   | <code> </code> |
+| [Formating.gs](https://github.com/Alexpascual28/rlis_inventory_system.git/blob/master/Formating.gs)                           | <code> </code> |
+| [Sorting.gs](https://github.com/Alexpascual28/rlis_inventory_system.git/blob/master/Sorting.gs)                               | <code> </code> |
+| [Dynamic Formating.gs](https://github.com/Alexpascual28/rlis_inventory_system.git/blob/master/Dynamic%20Formating.gs)           | <code> </code> |
+| [Add Row.gs](https://github.com/Alexpascual28/rlis_inventory_system.git/blob/master/Add%20Row.gs)                               | <code> </code> |
+| [Custom RLIS Functions.gs](https://github.com/Alexpascual28/rlis_inventory_system.git/blob/master/Custom%20RLIS%20Functions.gs)   | <code> </code> |
 
 </details>
 
